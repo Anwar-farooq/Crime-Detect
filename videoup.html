@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VIDEO UPLOAD</title>
+<link rel="stylesheet" type="text/css" href="dataup.css">
+<link rel="stylesheet" type="text/css" href="uploadnav.css">
+<style type="text/css">
+  body{
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+  }
+</style>
+</head>
+
+<body>
+    <body>
+            <!-- Start Nav Section -->
+<nav id="navbar" class="navbar">
+  <ul class="nav-menu">
+    <li>
+      <a data-scroll="home" href="home.html" class="dot">
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a data-scroll="about" href="upload.html" class="dot">
+        <span>Upload Data</span>
+      </a>
+    </li>
+    <li>
+      <a data-scroll="services" href="about.html" class="dot">
+        <span>About</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+    <div id="logo"> 
+  <h1><i> UPLOAD VIDEO EVIDENCE</i></h1>
+</div> 
+<script>
+var stateObject = {
+"India": { "Delhi": ["new Delhi", "North Delhi"],
+"Kerala": ["Thiruvananthapuram", "Palakkad","Idukki","Malappuram"],
+"Goa": ["North Goa", "South Goa"]
+}}
+window.onload = function () {
+var countySel = document.getElementById("countySel"),
+stateSel = document.getElementById("stateSel"),
+districtSel = document.getElementById("districtSel");
+for (var country in stateObject) {
+countySel.options[countySel.options.length] = new Option(country, country);
+}
+countySel.onchange = function () {
+stateSel.length = 1; // remove all options bar first
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done 
+for (var state in stateObject[this.value]) {
+stateSel.options[stateSel.options.length] = new Option(state, state);
+}
+}
+countySel.onchange(); // reset in case page is reloaded
+stateSel.onchange = function () {
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done 
+var district = stateObject[countySel.value][this.value];
+for (var i = 0; i < district.length; i++) {
+districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+}
+}
+}
+</script>
+		<section class="stark-login">
+    
+      <form name="myform" id="myForm" action="vidup.php" method="POST" enctype="multipart/form-data" >
+          <div id="fade-box">
+						<input class="a" type="file" name="file">				
+				<select class="f" name="state" id="countySel" size="1">
+					<option class="f" value="" selected="selected">Select Country</option>
+					</select>
+				<select class="b" name="countrya" id="stateSel" size="1">
+				<option value="" selected="selected">Please select Country first</option>
+				</select>
+                <select class="c" name="district" id="districtSel" size="1">
+				<option value="" selected="selected">Please select State first</option>
+				</select>
+				<select class="d" name="typ" id="typsel" size="1">
+				<option value="police" selected="selected">Police</option>
+				<option value="forest">Forest</option>
+				<option value="incometax">Income tax</option>
+				<option value="narcotics">Narcotics</option>
+				</select>
+					<textarea class="e" rows="3" cols="50" name="discrip" placeholder="Describe something about incident {eg. Date and Time}"></textarea>
+					<input class="button" type="submit" name="submit" value="SUBMIT"/>
+      </form>
+      <div class="hexagons">
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <br>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span> 
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            
+            <br>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <br>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+              </div>      
+            </section> 
+            
+            <div id="circle1">
+              <div id="inner-cirlce1">
+                <h2> </h2>
+              </div>
+            </div>  
+	</body>
+</html>

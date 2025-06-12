@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>home||Crime detect</title>
+	
+	<link rel="stylesheet" type="text/css" href="uploadstyle.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" type="text/css" href="uploadback.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap" rel="stylesheet">
+  <style type="text/css">
+
+.logo h3 {
+
+  position: relative;
+  top: -10px;
+  left: 35px;
+}
+html{
+  scroll-behavior: smooth;
+  }
+.header_menu{
+  position: fixed;
+  top: 36px;
+  background: transparent white;
+  background-size: cover;
+  width: 100%;
+  height: 40px;
+  transition: all 0.3s ease;
+  z-index: 99999;
+}
+.header_menu{
+  width: 100%;
+  height: 6%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+/*  border:1px solid red;*/
+}
+
+.logo{
+  width: 25%;
+  text-align: center;
+
+}
+h2{
+  color: white;
+}
+.content{
+  position: absolute;
+  height:auto;
+  margin: 0;
+  top: 150px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+}
+.logo h3{
+  color: #cca12e;
+  letter-spacing: 1px;
+}
+
+.menu_list{
+  width: 80%;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.menu_list li{
+  display: inline-block;
+  text-transform: uppercase;
+  list-style: none;
+  letter-spacing: 2px;
+  padding-left: 50px;
+}
+
+.menu_list li a{
+  color: #ffba00;
+  background-color: black;
+  text-decoration: none;
+  border-radius: .1cm;
+}
+
+.menu_list li a:hover{
+  color:red;
+}
+
+.logo h3 span {
+  position: relative;
+}
+
+
+.ud_1 {
+  -webkit-animation: bounce1 3s ease-in-out infinite running;
+}
+.ud_2 {
+  -webkit-animation: bounce2 3s ease-in-out infinite running;
+}
+.ud_3 {
+  -webkit-animation: bounce3 3s ease-in-out infinite running;
+}
+.ud_4 {
+  -webkit-animation: bounce4 3s ease-in-out infinite running;
+}
+.ud_5 {
+  -webkit-animation: bounce5 3s ease-in-out infinite running;
+}
+.ud_6 {
+  -webkit-animation: bounce6 3s ease-in-out infinite running;
+}
+.ud_7 {
+  -webkit-animation: bounce7 3s ease-in-out infinite running;
+}
+.ud_8 {
+  -webkit-animation: bounce8 3s ease-in-out infinite running;
+}
+.ud_9 {
+  -webkit-animation: bounce9 3s ease-in-out infinite running;
+}
+.ud_10 {
+  -webkit-animation: bounce10 3s ease-in-out infinite running;
+}
+.ud_11 {
+  -webkit-animation: bounce11 3s ease-in-out infinite running;
+}
+
+
+@-webkit-keyframes bounce1 {
+  0% {
+    bottom: 0;
+  }
+  5% {
+    bottom: 15px;
+  }
+  10% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce2 {
+  5% {
+    bottom: 0;
+  }
+  10% {
+    bottom: 15px;
+  }
+  15% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce3 {
+  10% {
+    bottom: 0;
+  }
+  15% {
+    bottom: 15px;
+  }
+  20% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce4 {
+  15% {
+    bottom: 0;
+  }
+  20% {
+    bottom: 15px;
+  }
+  25% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce5 {
+  20% {
+    bottom: 0;
+  }
+  25% {
+    bottom: 15px;
+  }
+  30% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce6 {
+  25% {
+    bottom: 0;
+  }
+  30% {
+    bottom: 15px;
+  }
+  35% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce7 {
+  30% {
+    bottom: 0;
+  }
+  35% {
+    bottom: 15px;
+  }
+  40% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce8 {
+  35% {
+    bottom: 0;
+  }
+  40% {
+    bottom: 15px;
+  }
+  45% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce9 {
+  40% {
+    bottom: 0;
+  }
+  45% {
+    bottom: 15px;
+  }
+  50% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce10 {
+  45% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 15px;
+  }
+  55% {
+    bottom: 0;
+  }
+}
+@-webkit-keyframes bounce11 {
+  50% {
+    bottom: 0;
+  }
+  55% {
+    bottom: 15px;
+  }
+  60% {
+    bottom: 0;
+  }
+}
+
+
+html, body {
+  margin:0;
+  padding:0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 1.4em;
+  z-index: 22;
+  font-family: 'Spicy Rice', cursive;
+  text-align: center;
+  font-size: 7.3em;
+  pointer-events: none;
+  color: #fff;
+  opacity: 0.4;
+  z-index: 20;
+}
+  .title span {
+    font-family: 'Spicy Rice', cursive;
+    font-size: .4em;
+    color: #fff;
+    display: block;
+  }
+u{
+  color: #ffba00;
+}
+
+  </style>
+</head>
+
+<body>
+   <div id="nc-main" class="nc-main bg-cover bg-cc">
+
+      <div class="full-wh">
+      
+        <!-- STAR ANIMATION -->
+        <div class="bg-animation">
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
+          <div id='stars4'></div>
+        </div><!-- / STAR ANIMATION -->
+
+      </div>
+  </div>
+
+<p class="title">
+  CRIMEDETECT
+  <span>Law Enforcement Web-App</span>
+</p>
+<div class="header_menu">
+    <div class="logo"> 
+      <h3>
+  <span class="ud_bounce ud_1">C</span>
+  <span class="ud_bounce ud_2">R</span>
+  <span class="ud_bounce ud_3">I</span>
+  <span class="ud_bounce ud_4">M</span>
+  <span class="ud_bounce ud_5">E</span>
+  <span class="ud_bounce ud_6">D</span>
+  <span class="ud_bounce ud_7">E</span>
+  <span class="ud_bounce ud_8">T</span>
+  <span class="ud_bounce ud_9">E</span>
+  <span class="ud_bounce ud_10">C</span>
+  <span class="ud_bounce ud_11">T</span>
+</h3>
+    </div>
+    <div class="menu_list">
+      <ul>
+        <li><a href="Home.html" >home</a></li>
+        <li><a href="upload.html">upload</a> </li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </div>
+  </div>
+
+<div class="content">
+<h2><u>UPLOAD MEDIA</u></h2>
+<div class="buttons">
+  <button id="imageu" class="blob-btn">
+    IMAGE
+    <span class="blob-btn__inner">
+      <span class="blob-btn__blobs">
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+      </span>
+    </span>
+  </button>
+<div class="buttons">
+  <button id="videou" class="blob-btn">
+    VIDEO
+    <span class="blob-btn__inner">
+      <span class="blob-btn__blobs">
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+      </span>
+    </span>
+  </button>
+  <br/>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+      <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+    </filter>
+  </defs>
+</svg>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    document.getElementById("imageu").onclick = function () {
+        location.href = "imageup.html";
+		};
+	document.getElementById("videou").onclick = function () {
+        location.href = "videoup.html";	
+    };
+</script>
+
+</body>
+</html>

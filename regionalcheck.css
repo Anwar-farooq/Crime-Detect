@@ -1,0 +1,243 @@
+    body{
+  text-decoration: none;
+  background-color: #131c29;
+  color: #fff;
+}
+ .header_menu{
+  position: fixed;
+  top: 20px;
+  background: transparent black;
+  background-size: cover;
+  width: 100%;
+  height: 40px;
+  transition: all 0.3s ease;
+  z-index: 99999;
+}
+.header_menu{
+  width: 100%;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+/*  border:1px solid red;*/
+}
+
+.logo{
+  width: 20%;
+  text-align: center;
+}
+
+.logo h3{
+  color: white;
+  letter-spacing: 1px;
+  font-family: "dosis", sans-serif;
+  position: relative;
+  top: 5px;
+  left: 0;
+}
+.logo h3 span {
+  position: relative;
+}
+
+.menu_list{
+  top: -10px;
+  position: absolute;
+  width: 50%;
+  text-align: right;
+  align-content: right;
+  right: 0;
+  background-color: #131c29;
+}
+
+.menu_list li{
+  display: inline-block;
+  text-transform: uppercase;
+  list-style: none;
+  letter-spacing: 2px;
+  padding-left: 50px;
+}
+
+.menu_list li a{
+  color:rgba(255, 255, 255, .8);
+  text-decoration: none;
+}
+
+.menu_list li a:hover{
+  color:orange;
+}
+.ud_1 {
+  -webkit-animation: bounce1 3s ease-in-out infinite running;
+}
+.ud_2 {
+  -webkit-animation: bounce2 3s ease-in-out infinite running;
+}
+.ud_3 {
+  -webkit-animation: bounce3 3s ease-in-out infinite running;
+}
+.ud_4 {
+  -webkit-animation: bounce4 3s ease-in-out infinite running;
+}
+.ud_5 {
+  -webkit-animation: bounce5 3s ease-in-out infinite running;
+}
+.ud_6 {
+  -webkit-animation: bounce6 3s ease-in-out infinite running;
+}
+.ud_7 {
+  -webkit-animation: bounce7 3s ease-in-out infinite running;
+}
+.ud_8 {
+  -webkit-animation: bounce8 3s ease-in-out infinite running;
+}
+.ud_9 {
+  -webkit-animation: bounce9 3s ease-in-out infinite running;
+}
+.ud_10 {
+  -webkit-animation: bounce10 3s ease-in-out infinite running;
+}
+.ud_11 {
+  -webkit-animation: bounce11 3s ease-in-out infinite running;
+}
+
+
+@-webkit-keyframes bounce1 {
+  0% {
+    bottom: 0;
+  }
+  5% {
+    bottom: 15px;
+  }
+  10% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce2 {
+  5% {
+    bottom: 0;
+  }
+  10% {
+    bottom: 15px;
+  }
+  15% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce3 {
+  10% {
+    bottom: 0;
+  }
+  15% {
+    bottom: 15px;
+  }
+  20% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce4 {
+  15% {
+    bottom: 0;
+  }
+  20% {
+    bottom: 15px;
+  }
+  25% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce5 {
+  20% {
+    bottom: 0;
+  }
+  25% {
+    bottom: 15px;
+  }
+  30% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce6 {
+  25% {
+    bottom: 0;
+  }
+  30% {
+    bottom: 15px;
+  }
+  35% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce7 {
+  30% {
+    bottom: 0;
+  }
+  35% {
+    bottom: 15px;
+  }
+  40% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce8 {
+  35% {
+    bottom: 0;
+  }
+  40% {
+    bottom: 15px;
+  }
+  45% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce9 {
+  40% {
+    bottom: 0;
+  }
+  45% {
+    bottom: 15px;
+  }
+  50% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes bounce10 {
+  45% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 15px;
+  }
+  55% {
+    bottom: 0;
+  }
+}
+@-webkit-keyframes bounce11 {
+  50% {
+    bottom: 0;
+  }
+  55% {
+    bottom: 15px;
+  }
+  60% {
+    bottom: 0;
+  }
+}
+h1{
+  position: absolute;
+  left: 620px;
+  top: 100px;
+}
+section{
+  position: absolute;
+  top: 150px;
+  left: 280px;
+
+}

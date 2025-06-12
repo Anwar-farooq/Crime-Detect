@@ -1,0 +1,845 @@
+<?php
+session_start();
+ if(!isset($_SESSION['username'])){
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="https://use.typekit.net/jrj6out.js"></script>
+<script>try{Typekit.load({ async: false });}catch(e){}</script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r78/three.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="loadstyle.css">
+    <link rel="stylesheet" type="text/css" href="logo.css">
+
+<script src="jquery.min.js"></script>
+<link  href="master.css" type="text/css">
+    
+ <link rel="stylesheet" type="text/css" href="style1.css">
+ <!--<link rel="stylesheet" type="text/css" href="anim.css">-->
+<link rel="stylesheet" type="text/css" href="loginpop.css">
+
+<link href="font.css" rel="stylesheet">
+  <style type="text/css">
+    $screen-sm-min: 860px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+
+@mixin breakpoint($point) {
+    @if $point == $screen-sm-min {
+        @media screen and (min-width: $screen-sm-min) {
+            @content;
+        }
+    }
+    @elseif $point == $screen-md-min {
+        @media screen and (min-width: $screen-md-min) {
+            @content;
+        }
+    }
+    @elseif $point == $screen-lg-min {
+        @media screen and (min-width: $screen-lg-min) {
+            @content;
+        }
+    }
+}
+
+body {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+
+.intro-container {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    color: white;
+    text-align: center;
+    right: 0;
+    left: 0;
+}
+.intro{
+    font-family: 'brandon-grotesque', sans-serif;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 50px;
+    padding: 40px;
+}
+.text{
+  margin-top: 50px;
+  color: white
+  text-border:5px solid red;
+  z-index: 9999;
+}
+.fancy-text {
+    font-family: 'adobe-garamond-pro', sans-serif;
+    font-style: italic;
+    letter-spacing: 10px;
+    padding: 60px;
+}
+
+.button {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'brandon-grotesque', sans-serif;
+    text-transform: uppercase;
+    min-width: 200px;
+    z-index: 999999999999999;
+    margin-top: 30px;
+
+    &:hover {
+        .border {
+            box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 1);
+            .left-plane,
+            .right-plane {
+                transform: translateX(0%);
+            }
+        }
+
+        .text {
+            color: #121212;
+        }
+    }
+
+    .border {
+        border: 5px solid red;
+        transform: skewX(-20deg);
+        height: 32px;
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+        transition: 0.1s ease-out;
+
+        .left-plane, .right-plane {
+            position: absolute;
+            background: white;
+            height: 32px;
+            width: 100px;
+            transition: 0.15s ease-out;
+        }
+
+        .left-plane {
+            left: 0;
+            transform: translateX(-100%);
+        }
+
+        .right-plane {
+            right: 0;
+            transform: translateX(100%);
+        }
+    }
+
+    .text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.15s ease-out;
+    }
+}
+
+.x-mark {
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+
+    &:hover {
+        .right {
+            transform: rotate(-45deg) scaleY(1.2);
+        }
+
+        .left {
+            transform: rotate(45deg) scaleY(1.2);
+        }
+    }
+
+    .container {
+        position: relative;
+        width: 20px;
+        height: 20px;
+    }
+
+    .left,
+    .right {
+        width: 2px;
+        height: 20px;
+        background: white;
+        position: absolute;
+        border-radius: 3px;
+        transition: 0.15s ease-out;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+
+    .right {
+        transform: rotate(-45deg);
+    }
+
+    .left {
+        transform: rotate(45deg);
+    }
+}
+
+.sky-container {
+    position: absolute;
+    color: white;
+    text-transform: uppercase;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    top: 40px;
+    padding: 30px 0;
+    text-align: center;
+    opacity: 0;
+    @include breakpoint($screen-sm-min) {
+        top: 18%;
+        right: 12%;
+        left: auto;
+    }
+
+    &__left,
+    &__right {
+        display: inline-block;
+        vertical-align: top;
+        font-weight: bold;
+
+        h2 {
+            font-family: 'brandon-grotesque', sans-serif;
+            font-size: 26px;
+            line-height: 26px;
+            margin: 0;
+            @include breakpoint($screen-sm-min) {
+                font-size: 72px;
+                line-height: 68px;
+            }
+        }
+    }
+
+    &__left {
+        margin-right: 5px;
+    }
+
+    .thirty-one {
+        letter-spacing: 4px;
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+</style>
+<style>
+    section{
+        background: transparent;
+    }
+    li button { 
+        background-color: #4CAF50; 
+        color: white; 
+       
+        padding: 14px 15px; 
+        margin: 8px 0; 
+        border: none; 
+        cursor: pointer; 
+        width: 200px; 
+        border-radius:20px;
+    }li button:hover { 
+        opacity: 0.8;
+      border-radius:20px;
+    }
+ body{
+            padding: 0;
+            margin: 0;
+        }
+     html {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#mainnav {
+  position: absolute;
+  font-family: 'Roboto Condensed', sans-serif;
+  z-index: 1;
+    
+}
+#mainnav li {
+  margin: 55px 0;
+  left: -550px;
+  position: relative;
+  display: none;
+    
+}
+#mainnav a {
+  color: white;   
+  text-decoration: none;
+  font-size: 1.4em;
+
+      
+
+} 
+        ul li{
+            list-style: none;
+            margin-top: -50px;
+            
+        }
+.hamb {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2.5em;
+  z-index: 1;
+}
+.hamb a {
+  color: #fff;
+  text-decoration: none;
+}
+#bubble {
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  left: 0;
+  top: 0;
+  position: fixed;
+  display: none;
+  z-index: 1;
+  background: rgba(0, 0, 0, .5);
+}
+     
+        
+        .gap{
+             
+            color: white;
+            margin-top: 50px;
+            width: 200px;
+            left: 0; 
+            margin-left: 0;            
+        }
+
+  #title {
+    top: 350px;
+    letter-spacing: 35px;
+    position: absolute;
+    text-align: center;
+}
+</style>
+</head>
+<body onload="myfunction()">
+<div id='preloader'>
+<div class="loader">
+  <div class="loader-inner">
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- This pen isn't a fan of small view heights, check it out in  fullpage view for optimal viewing  -->
+  <div class="x-mark">
+    <div class="container">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </div>
+  <div class="intro-container">
+    <h2 class="fancy-text">GROUP 11</h2><br>
+    <h1 class="intro">CRIME DETECT <br> Law Enforcement Web-App</h1>
+
+    <div class="button shift-camera-button">
+      <div class="border">
+        <div class="left-plane"></div>
+        <div class="right-plane"></div>
+      </div>  
+      <div class="text">GET STARTED</div>
+    </div>
+  </div>
+  <div class="sky-container">
+     <nav role='navigation' id="mainnav">
+    <br><br><br>
+  <ul class="gap">
+    <li><a class="active" href="Home.html">Home</a></li>
+    <li><a href="upload.html">Upload the Evidence</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><button onclick="document.getElementById('id05').style.display='block'">Admin Login</button> </li>
+ 
+  </ul>
+</nav> 
+<div class="hamb">
+  <a href="#"><i class="fa fa-bars">&#9776;</i></a>
+</div>
+<h1 id="title"><svg id="logo" width="631" height="75" viewBox="0 0 631 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="0" y="0" width="631" height="75" fill="white">
+<rect fill="white" width="631" height="75"/>
+<path d="M3 37.272C3 30.744 4.472 24.888 7.416 19.704C10.36 14.456 14.36 10.36 19.416 7.416C24.536 4.472 30.2 3 36.408 3C43.704 3 50.072 4.76 55.512 8.28C60.952 11.8 64.92 16.792 67.416 23.256H56.952C55.096 19.224 52.408 16.12 48.888 13.944C45.432 11.768 41.272 10.68 36.408 10.68C31.736 10.68 27.544 11.768 23.832 13.944C20.12 16.12 17.208 19.224 15.096 23.256C12.984 27.224 11.928 31.896 11.928 37.272C11.928 42.584 12.984 47.256 15.096 51.288C17.208 55.256 20.12 58.328 23.832 60.504C27.544 62.68 31.736 63.768 36.408 63.768C41.272 63.768 45.432 62.712 48.888 60.6C52.408 58.424 55.096 55.32 56.952 51.288H67.416C64.92 57.688 60.952 62.648 55.512 66.168C50.072 69.624 43.704 71.352 36.408 71.352C30.2 71.352 24.536 69.912 19.416 67.032C14.36 64.088 10.36 60.024 7.416 54.84C4.472 49.656 3 43.8 3 37.272Z"/>
+<path d="M115.652 70.776L99.7163 43.416H89.1562V70.776H80.4202V3.864H102.02C107.076 3.864 111.332 4.728 114.788 6.456C118.308 8.184 120.932 10.52 122.66 13.464C124.388 16.408 125.252 19.768 125.252 23.544C125.252 28.152 123.908 32.216 121.22 35.736C118.596 39.256 114.628 41.592 109.316 42.744L126.116 70.776H115.652ZM89.1562 36.408H102.02C106.756 36.408 110.308 35.256 112.676 32.952C115.044 30.584 116.228 27.448 116.228 23.544C116.228 19.576 115.044 16.504 112.676 14.328C110.372 12.152 106.82 11.064 102.02 11.064H89.1562V36.408Z"/>
+<path d="M147.562 3.864V70.776H138.826V3.864H147.562Z"/>
+<path d="M230.324 4.344V70.776H221.587V21.24L199.507 70.776H193.363L171.188 21.144V70.776H162.451V4.344H171.859L196.436 59.256L221.011 4.344H230.324Z"/>
+<path d="M253.875 10.968V33.336H278.259V40.536H253.875V63.576H281.139V70.776H245.139V3.768H281.139V10.968H253.875Z"/>
+<path d="M315.19 3.864C322.486 3.864 328.79 5.24 334.102 7.992C339.478 10.68 343.574 14.552 346.39 19.608C349.27 24.664 350.71 30.616 350.71 37.464C350.71 44.312 349.27 50.264 346.39 55.32C343.574 60.312 339.478 64.152 334.102 66.84C328.79 69.464 322.486 70.776 315.19 70.776H294.358V3.864H315.19ZM315.19 63.576C323.83 63.576 330.422 61.304 334.966 56.76C339.51 52.152 341.782 45.72 341.782 37.464C341.782 29.144 339.478 22.648 334.87 17.976C330.326 13.304 323.766 10.968 315.19 10.968H303.094V63.576H315.19Z"/>
+<path d="M370.969 10.968V33.336H395.353V40.536H370.969V63.576H398.233V70.776H362.233V3.768H398.233V10.968H370.969Z"/>
+<path d="M452.635 3.864V10.968H434.396V70.776H425.66V10.968H407.324V3.864H452.635Z"/>
+<path d="M472.125 10.968V33.336H496.509V40.536H472.125V63.576H499.389V70.776H463.389V3.768H499.389V10.968H472.125Z"/>
+<path d="M509.344 37.272C509.344 30.744 510.816 24.888 513.76 19.704C516.704 14.456 520.704 10.36 525.76 7.416C530.88 4.472 536.544 3 542.752 3C550.048 3 556.416 4.76 561.856 8.28C567.296 11.8 571.264 16.792 573.76 23.256H563.296C561.44 19.224 558.752 16.12 555.232 13.944C551.776 11.768 547.616 10.68 542.752 10.68C538.08 10.68 533.888 11.768 530.176 13.944C526.464 16.12 523.552 19.224 521.44 23.256C519.328 27.224 518.272 31.896 518.272 37.272C518.272 42.584 519.328 47.256 521.44 51.288C523.552 55.256 526.464 58.328 530.176 60.504C533.888 62.68 538.08 63.768 542.752 63.768C547.616 63.768 551.776 62.712 555.232 60.6C558.752 58.424 561.44 55.32 563.296 51.288H573.76C571.264 57.688 567.296 62.648 561.856 66.168C556.416 69.624 550.048 71.352 542.752 71.352C536.544 71.352 530.88 69.912 525.76 67.032C520.704 64.088 516.704 60.024 513.76 54.84C510.816 49.656 509.344 43.8 509.344 37.272Z"/>
+<path d="M627.948 3.864V10.968H609.708V70.776H600.972V10.968H582.636V3.864H627.948Z"/>
+</mask>
+<path d="M3 37.272C3 30.744 4.472 24.888 7.416 19.704C10.36 14.456 14.36 10.36 19.416 7.416C24.536 4.472 30.2 3 36.408 3C43.704 3 50.072 4.76 55.512 8.28C60.952 11.8 64.92 16.792 67.416 23.256H56.952C55.096 19.224 52.408 16.12 48.888 13.944C45.432 11.768 41.272 10.68 36.408 10.68C31.736 10.68 27.544 11.768 23.832 13.944C20.12 16.12 17.208 19.224 15.096 23.256C12.984 27.224 11.928 31.896 11.928 37.272C11.928 42.584 12.984 47.256 15.096 51.288C17.208 55.256 20.12 58.328 23.832 60.504C27.544 62.68 31.736 63.768 36.408 63.768C41.272 63.768 45.432 62.712 48.888 60.6C52.408 58.424 55.096 55.32 56.952 51.288H67.416C64.92 57.688 60.952 62.648 55.512 66.168C50.072 69.624 43.704 71.352 36.408 71.352C30.2 71.352 24.536 69.912 19.416 67.032C14.36 64.088 10.36 60.024 7.416 54.84C4.472 49.656 3 43.8 3 37.272Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M115.652 70.776L99.7163 43.416H89.1562V70.776H80.4202V3.864H102.02C107.076 3.864 111.332 4.728 114.788 6.456C118.308 8.184 120.932 10.52 122.66 13.464C124.388 16.408 125.252 19.768 125.252 23.544C125.252 28.152 123.908 32.216 121.22 35.736C118.596 39.256 114.628 41.592 109.316 42.744L126.116 70.776H115.652ZM89.1562 36.408H102.02C106.756 36.408 110.308 35.256 112.676 32.952C115.044 30.584 116.228 27.448 116.228 23.544C116.228 19.576 115.044 16.504 112.676 14.328C110.372 12.152 106.82 11.064 102.02 11.064H89.1562V36.408Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M147.562 3.864V70.776H138.826V3.864H147.562Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M230.324 4.344V70.776H221.587V21.24L199.507 70.776H193.363L171.188 21.144V70.776H162.451V4.344H171.859L196.436 59.256L221.011 4.344H230.324Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M253.875 10.968V33.336H278.259V40.536H253.875V63.576H281.139V70.776H245.139V3.768H281.139V10.968H253.875Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M315.19 3.864C322.486 3.864 328.79 5.24 334.102 7.992C339.478 10.68 343.574 14.552 346.39 19.608C349.27 24.664 350.71 30.616 350.71 37.464C350.71 44.312 349.27 50.264 346.39 55.32C343.574 60.312 339.478 64.152 334.102 66.84C328.79 69.464 322.486 70.776 315.19 70.776H294.358V3.864H315.19ZM315.19 63.576C323.83 63.576 330.422 61.304 334.966 56.76C339.51 52.152 341.782 45.72 341.782 37.464C341.782 29.144 339.478 22.648 334.87 17.976C330.326 13.304 323.766 10.968 315.19 10.968H303.094V63.576H315.19Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M370.969 10.968V33.336H395.353V40.536H370.969V63.576H398.233V70.776H362.233V3.768H398.233V10.968H370.969Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M452.635 3.864V10.968H434.396V70.776H425.66V10.968H407.324V3.864H452.635Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M472.125 10.968V33.336H496.509V40.536H472.125V63.576H499.389V70.776H463.389V3.768H499.389V10.968H472.125Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M509.344 37.272C509.344 30.744 510.816 24.888 513.76 19.704C516.704 14.456 520.704 10.36 525.76 7.416C530.88 4.472 536.544 3 542.752 3C550.048 3 556.416 4.76 561.856 8.28C567.296 11.8 571.264 16.792 573.76 23.256H563.296C561.44 19.224 558.752 16.12 555.232 13.944C551.776 11.768 547.616 10.68 542.752 10.68C538.08 10.68 533.888 11.768 530.176 13.944C526.464 16.12 523.552 19.224 521.44 23.256C519.328 27.224 518.272 31.896 518.272 37.272C518.272 42.584 519.328 47.256 521.44 51.288C523.552 55.256 526.464 58.328 530.176 60.504C533.888 62.68 538.08 63.768 542.752 63.768C547.616 63.768 551.776 62.712 555.232 60.6C558.752 58.424 561.44 55.32 563.296 51.288H573.76C571.264 57.688 567.296 62.648 561.856 66.168C556.416 69.624 550.048 71.352 542.752 71.352C536.544 71.352 530.88 69.912 525.76 67.032C520.704 64.088 516.704 60.024 513.76 54.84C510.816 49.656 509.344 43.8 509.344 37.272Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+<path d="M627.948 3.864V10.968H609.708V70.776H600.972V10.968H582.636V3.864H627.948Z" stroke="white" stroke-width="6" mask="url(#path-1-outside-1)"/>
+</svg>
+</h1>
+<canvas id="bubble"></canvas>
+
+    <script src="jquery-3.3.1.js"></script>
+    <script src="jquery-ui.js"></script>
+<script>
+  
+var w = window.innerWidth,
+    h = window.innerHeight,
+    canvas = document.getElementById('bubble'),
+    ctx = canvas.getContext('2d'),
+    rate = 60,
+    arc = 100,
+    time,
+    count,
+    size = 7,
+    speed = 20,
+    lights = new Array,
+    colors = ['#d59254','#ffffff','#1f2839','#cf7693'];
+
+canvas.setAttribute('width',w);
+canvas.setAttribute('height',h);
+
+function init() {
+  time = 0;
+  count = 0;
+
+  for(var i = 0; i < arc; i++) {
+    lights[i] = {
+      x: Math.ceil(Math.random() * w),
+      y: Math.ceil(Math.random() * h),
+      toX: Math.random() * 5 + 1,
+      toY: Math.random() * 5 + 1,
+      c: colors[Math.floor(Math.random()*colors.length)],
+      size: Math.random() * size
+    }
+  }
+}
+
+function bubble() {
+  ctx.clearRect(0,0,w,h);
+
+  for(var i = 0; i < arc; i++) {
+    var li = lights[i];
+    
+    ctx.beginPath();
+    ctx.arc(li.x,li.y,li.size,0,Math.PI*2,false);
+    ctx.fillStyle = li.c;
+    ctx.fill();
+    
+    li.x = li.x + li.toX * (time * 0.05);
+    li.y = li.y + li.toY * (time * 0.05);
+    
+    if(li.x > w) { li.x = 0; }
+    if(li.y > h) { li.y = 0; }
+    if(li.x < 0) { li.x = w; }
+    if(li.y < 0) { li.y = h; }
+  }
+  if(time < speed) {
+    time++;
+  }
+  timerID = setTimeout(bubble,1000/rate);
+}
+init();
+bubble(); 
+
+//navigation (this is my code)
+var animation = 'easeOutCubic';
+    delay     = 60;
+
+$(document)
+  .on('click', '.fa-bars', function(){
+    var i = 0;
+    $('nav').before($('#bubble'));
+    $('#bubble').fadeIn();
+    $('#mainnav').find('li').each(function(){
+      var that = $(this);
+      i++;
+      (function(i, that){
+          setTimeout(function(){
+            that
+              .animate(
+                { 'left'   : '20px' }, 
+                { duration : 350, 
+                  easing   : animation })
+              .fadeIn({queue: false});
+          }, delay * i)
+      }(i, that))
+    }); 
+    $('.fa-bars').fadeOut(100,function(){
+      $(this)
+        .removeClass('fa-bars')
+        .addClass('fa-times')
+        .html('&#10060;')
+        .fadeIn(); 
+    });
+  })
+  .on('click', '#bubble, .fa-times', function(){ 
+    $('#bubble').fadeOut();
+    $('#mainnav').find('li')
+      .animate(
+        { 'left'   : '-550px' }, 
+        { duration : 250 })
+      .fadeOut({queue: false});
+    
+    $('.hamb').fadeOut(100, function(){
+      $(this)
+        .find($('i'))
+        .removeClass('fa-times')
+        .addClass('fa-bars')
+        .html('&#9776;')
+        .end()
+        .fadeIn();
+    });
+  }) 
+    
+</script>
+    <div id="id05" class="modal1"> <!--<img src="logicon.jpg" alt="user" class="avatar">-->
+ <div id="logo"> 
+  <h1><i> LOGIN</i></h1>
+</div> 
+<section class="stark-login">
+    <button class="close" onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&#10060;</button>
+   <form method="POST" action="adminauth.php">
+  
+    <div id="fade-box">
+      <input type="text" placeholder="Username" name="usrm" required>
+    <input type="password" placeholder="Password" name="pswd" required>
+    <input class="button" type="submit" value="Login">
+           
+        </div>
+      </form>
+         
+            </section> 
+            
+            <div id="circle1">
+              <div id="inner-cirlce1">
+                <h2> </h2>
+              </div>
+            </div>
+            
+            
+            
+<script> 
+        var modal = document.getElementById('id05'); 
+        window.onclick = function(event) { 
+            if (event.target == modal) { 
+                modal.style.display = "none"; 
+            } 
+        } 
+    </script> 
+</div>
+  </div>
+
+<script type="text/javascript">
+  "use strict";
+/* globals THREE, $, TweenLite, Power3, TimelineMax  */
+
+let camera, scene, renderer;
+let plane;
+let raycaster = new THREE.Raycaster();
+let normalizedMouse = {
+  x: 0,
+  y: -180
+};
+
+// let lightBlue = {
+//  r: 34,
+//  g: 183,
+//  b: 236
+// };
+
+let darkBlue = {
+  r: 0,
+  g: 52,
+  b: 74
+};
+
+let baseColorRGB = darkBlue;
+let baseColor = "rgb(" + baseColorRGB.r + "," + baseColorRGB.g + "," + baseColorRGB.b + ")";
+let nearStars, farStars, farthestStars;
+
+
+function init() {
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  renderer = new THREE.WebGLRenderer();
+
+
+
+  // Scene initialization
+  camera.position.z = 50;
+  
+
+  renderer.setClearColor( "#121212", 1.0);
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setPixelRatio( window.devicePixelRatio );
+
+  document.body.appendChild( renderer.domElement );
+
+  // Lights
+  let topLight = new THREE.DirectionalLight(0xffffff, 1);
+  topLight.position.set(0,1,1).normalize();
+  scene.add(topLight);
+
+  let bottomLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  bottomLight.position.set(1,-1,1).normalize();
+  scene.add(bottomLight);
+
+  let skyLightRight = new THREE.DirectionalLight(0x666666, 0.2);
+  skyLightRight.position.set(-1,-1,0.2).normalize();
+  scene.add(skyLightRight);
+
+  let skyLightCenter = new THREE.DirectionalLight(0x666666, 0.2);
+  skyLightCenter.position.set(-0,-1,0.2).normalize();
+  scene.add(skyLightCenter);
+
+  let skyLightLeft = new THREE.DirectionalLight(0x666666, 0.2);
+  skyLightLeft.position.set(1,-1,0.2).normalize();
+  scene.add(skyLightLeft);
+
+
+
+  // Mesh creation
+  let geometry = new THREE.PlaneGeometry(400, 400, 70, 70);
+  let darkBlueMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading, side: THREE.DoubleSide, vertexColors: THREE.FaceColors} );
+
+  geometry.vertices.forEach(function(vertice) {
+    vertice.x += (Math.random() - 0.5) * 4;
+    vertice.y += (Math.random() - 0.5) * 4;
+    vertice.z += (Math.random() - 0.5) * 4;
+    vertice.dx = Math.random() - 0.5;
+    vertice.dy = Math.random() - 0.5;
+    vertice.randomDelay = Math.random() * 5;
+  });
+
+  for ( var i = 0; i < geometry.faces.length; i ++ ) {
+      geometry.faces[ i ].color.setStyle( baseColor );
+    geometry.faces[ i ].baseColor =  baseColorRGB;    
+  }
+
+
+  plane = new THREE.Mesh( geometry, darkBlueMaterial );
+  scene.add( plane );
+
+
+
+  // Create stars 
+  farthestStars = createStars(1200, 420, "#0952BD");
+  farStars = createStars(1200, 370, "#A5BFF0");
+  nearStars = createStars(1200, 290,"#118CD6");
+
+  scene.add(farthestStars);
+  scene.add(farStars);
+  scene.add(nearStars);
+
+  farStars.rotation.x = 0.25; 
+  nearStars.rotation.x = 0.25; 
+
+  // Uncomment for testing second camera position
+  // camera.rotation.x = Math.PI / 2;
+  // camera.position.y = -0;
+  // camera.position.z = 20;
+  // plane.scale.x = 2;
+
+}
+
+
+function createStars(amount, yDistance, color = "0x000000") {
+  let opacity = Math.random();
+  let starGeometry = new THREE.Geometry();
+  let starMaterial = new THREE.PointsMaterial({color: color, opacity: opacity});
+
+  for (let i = 0; i < amount; i++) {
+    let vertex = new THREE.Vector3();
+        vertex.z = (Math.random() - 0.5) * 1500;
+        vertex.y = yDistance;
+        vertex.x = (Math.random() - 0.5) * 1500;
+
+        starGeometry.vertices.push(vertex);
+  } 
+
+
+    return new THREE.Points(starGeometry, starMaterial);
+}
+
+
+let timer = 0;
+
+
+function render() {
+  requestAnimationFrame( render );
+
+
+  timer += 0.01;
+  let vertices = plane.geometry.vertices;
+
+  for (let i = 0; i < vertices.length; i++) {
+    // Ease back to original vertice position while still maintaining sine wave
+    vertices[i].x -= (Math.sin(timer + vertices[i].randomDelay) / 40) * vertices[i].dx;
+    vertices[i].y += (Math.sin(timer + vertices[i].randomDelay) / 40) * vertices[i].dy;
+    // ((vertices[i].x - vertices[i].originalPosition.x) * 0.1) + 
+  }
+
+  // Determine where ray is being projected from camera view
+  raycaster.setFromCamera(normalizedMouse, camera);
+
+  // Send objects being intersected into a variable
+  let intersects = raycaster.intersectObjects([plane]);
+
+  if (intersects.length > 0) {
+
+      let faceBaseColor = intersects[0].face.baseColor;
+
+      plane.geometry.faces.forEach(function(face) {
+        face.color.r *= 255;
+        face.color.g *= 255;
+        face.color.b *= 255;
+
+        face.color.r += (faceBaseColor.r - face.color.r) * 0.01;
+        face.color.g += (faceBaseColor.g - face.color.g) * 0.01;
+        face.color.b += (faceBaseColor.b - face.color.b) * 0.01;
+
+        let rInt = Math.floor(face.color.r);
+        let gInt = Math.floor(face.color.g);
+        let bInt = Math.floor(face.color.b);
+
+        let newBasecol = "rgb(" + rInt + "," + gInt + "," + bInt + ")";
+        face.color.setStyle(newBasecol);
+      });
+      plane.geometry.colorsNeedUpdate = true;
+
+      intersects[0].face.color.setStyle("#006ea0");
+      plane.geometry.colorsNeedUpdate = true;
+
+  }
+
+    
+
+  plane.geometry.verticesNeedUpdate = true;
+  plane.geometry.elementsNeedUpdate = true;
+
+  farthestStars.rotation.y -= 0.00001;
+  farStars.rotation.y -= 0.00005;
+  nearStars.rotation.y -= 0.00011;
+
+
+  renderer.render(scene, camera);
+}
+
+init();
+
+window.addEventListener("resize", function() {
+
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+
+});
+
+window.addEventListener("mousemove", function(event) {
+
+  // Normalize mouse coordinates
+  normalizedMouse.x = (event.clientX / window.innerWidth) * 2 - 1;  
+  normalizedMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;  
+
+});
+
+let introContainer = $('.intro-container');
+let skyContainer = $('.sky-container');
+let xMark = $('.x-mark');
+
+
+$('.intro-container').click(function() {
+  let introTimeline = new TimelineMax();
+
+  introTimeline.add([
+    TweenLite.fromTo(introContainer, 0.5, {opacity: 1}, {opacity: 0, ease: Power3.easeIn}),
+    TweenLite.to(camera.rotation, 3, {x: Math.PI / 2, ease: Power3.easeInOut}),
+    TweenLite.to(camera.position, 2.5, {z: 20, ease: Power3.easeInOut}),
+    TweenLite.to(camera.position, 3, {y: 120, ease: Power3.easeInOut}),
+    TweenLite.to(plane.scale, 3, {x: 2, ease: Power3.easeInOut}),
+  ]);
+
+  introTimeline.add([
+    TweenLite.to(xMark, 2, {opacity: 1, ease: Power3.easeInOut}),
+    TweenLite.to(skyContainer, 2, {opacity: 1, ease: Power3.easeInOut})
+  ]);
+});
+
+
+$('.x-mark').click(function() {
+  let outroTimeline = new TimelineMax();
+  
+  outroTimeline.add([
+    TweenLite.to(xMark, 0.5, {opacity: 0, ease: Power3.easeInOut}),
+    TweenLite.to(skyContainer, 0.5, {opacity: 0, ease: Power3.easeInOut}),
+    TweenLite.to(camera.rotation, 3, {x: 0, ease: Power3.easeInOut}),
+    TweenLite.to(camera.position, 3, {z: 50, ease: Power3.easeInOut}),
+    TweenLite.to(camera.position, 2.5, {y: 0, ease: Power3.easeInOut}),
+    TweenLite.to(plane.scale, 3, {x: 1, ease: Power3.easeInOut}),
+  ]);
+
+  outroTimeline.add([
+    TweenLite.to(introContainer, 0.5, {opacity: 1, ease: Power3.easeIn}),
+  ]);
+});
+
+render();
+</script>
+<script>
+    
+        var preloader1=document.getElementById('preloader');
+        
+        function myfunction(){
+            preloader1.style.display='none';
+        }
+    </script>
+</body>
+</html>
+<?php
+}else{
+    header("location:regionaladmin.php");
+
+}
+?>
